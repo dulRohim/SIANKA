@@ -2,6 +2,8 @@
 
 namespace app\modules\admin;
 
+use Yii;
+
 /**
  * admin module definition class
  */
@@ -21,6 +23,16 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
-        // custom initialization code goes here
+        Yii::$app->set('user', [
+            'class' => 'yii\web\User',
+            'identityClass' => 'appmodels\User',
+            'enableAutoLogin' => false,
+            'loginUrl' => ['admin/default/login'],
+        ]);
+
+        Yii::$app->set('session', [
+            'class' => 'yii\web\Session',
+            'name' => '_adminSessionId',
+        ]);
     }
 }

@@ -44,4 +44,35 @@ class DefaultController extends Controller
     {
         return $this->render('index');
     }
+
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginKontingenForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+            // return $this->goBack();
+            // return $this->redirect(Yii::$app->request->referrer);
+        }
+
+        $model->password = '';
+        return $this->render('loginKontingen', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Logout action.
+     *
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
 }

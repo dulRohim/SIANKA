@@ -8,7 +8,7 @@ use app\models\Pendaftar;
 /* @var $model app\models\Pendaftar */
 
 $this->title = $model->ktg_atlet_id." - ".$model->ktgAtlet->atletNik->atlet_nama;
-$this->params['breadcrumbs'][] = ['label' => 'Pendaftar', 'url' => ['index', 'ktg' => Yii::$app->user->identity->kontingen_id, 'ev' => $_GET['ev']]];
+$this->params['breadcrumbs'][] = ['label' => 'Pendaftar', 'url' => ['index', 'ev' => $_GET['ev']]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pendaftar-view">
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ->where(
                             [
                                 'ktg_atlet.ktg_atlet_id'=>$t,
-                                'ktg_atlet.kontingen_id' =>Yii::$app->user->identity->kontingen_id
+                                // 'ktg_atlet.kontingen_id' =>Yii::$app->user->identity->kontingen_id
                             ])
                         ->one();
                         $array[] = $data->ktgAtlet->atletNik->atlet_nama;
