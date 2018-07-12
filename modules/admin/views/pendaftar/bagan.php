@@ -32,7 +32,7 @@ echo GridView::widget([
 
             [
             	'class'		=> 'yii\grid\ActionColumn',
-            	'template'	=> '{bagan} {juara}',
+            	'template'	=> '{bagan} {juara} {drawing}',
             	'buttons'	=> [
             		'bagan'	=> function ($url, $model) {
             			$url = Url::to(['/admin/pendaftar/atlet', 'ev' => $_GET['ev'], 'kls' => $model->bagan_id]);
@@ -41,6 +41,10 @@ echo GridView::widget([
                     'juara' => function ($url, $model) {
                         $url = Url::to(['/admin/pendaftar/juara', 'ev' => $_GET['ev'], 'kls' => $model->bagan_id]);
                         return Html::a('Lihat Juara', $url, ['class' => 'btn btn-primary']);
+                    },
+                    'drawing' => function ($url, $model) {
+                        // $url = Url::to(['/admin/pendaftar/juara', 'ev' => $_GET['ev'], 'kls' => $model->bagan_id]);
+                        return Html::a('Lihat Drawing', '#', ['class' => 'btn btn-info']);
                     },
             	],
             ],

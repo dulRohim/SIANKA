@@ -35,7 +35,7 @@ use kartik\date\DatePicker;
      <br>
 
     <?php
-    echo '<label class="control-label">Tanggal Mulai</label>';
+    echo '<label class="control-label">Tanggal Selesai</label>';
     echo DatePicker::widget([
         'model' => $model,
         'attribute' => 'event_tgl_selesai',

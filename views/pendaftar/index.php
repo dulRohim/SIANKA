@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PendaftarSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pendaftar';
+$this->title = 'Atlet yang Mengikuti Event';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pendaftar-index">
@@ -27,20 +27,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'pendaftar_id',
-            'ktg_atlet_id',
+            // 'ktg_atlet_id',
             [
                 'attribute' => 'atlet_nama',
                 'value' => 'ktgAtlet.atletNik.atlet_nama'
             ],
-            'bagan_id',
-            [
-                'attribute' => 'event_id',
-                'value' => 'bagan.event.event_id'
-            ],
-            [
-                'attribute' => 'event_nama',
-                'value' => 'bagan.event.event_nama'
-            ],
+            // 'bagan_id',
+            // [
+            //     'attribute' => 'event_id',
+            //     'value' => 'bagan.event.event_id'
+            // ],
+            // [
+            //     'attribute' => 'event_nama',
+            //     'value' => 'bagan.event.event_nama'
+            // ],
             [
                 'attribute' => 'kelas_nama',
                 'value' => 'bagan.kelas.kelas_nama'

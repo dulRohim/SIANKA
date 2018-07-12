@@ -8,12 +8,12 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\KtgAtletSeaarch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ktg Atlets';
+$this->title = 'Kontingen Atlets';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ktg-atlet-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>

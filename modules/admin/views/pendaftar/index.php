@@ -44,7 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class'     => 'yii\grid\ActionColumn',
-                'template'  => '{view} {update} {delete}',
+                'template'  => '{view} {update}',
+                // 'template'  => '{view} {update} {delete}',
                 'buttons'   => [
                     'view' => function ($url, $model) {
                         $url = Url::to(['/admin/pendaftar/view', 'ev' => $_GET['ev'], 'id' => $model->pendaftar_id]);
@@ -54,15 +55,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         $url = Url::to(['/admin/pendaftar/update', 'ev' => $_GET['ev'], 'id' => $model->pendaftar_id]);
                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['class' => 'btn btn-primary']);
                     },
-                    'delete' => function ($url, $model) {
-                        $url = Url::to(['/admin/pendaftar/delete', 'ev' => $_GET['ev'], 'id' => $model->pendaftar_id]);
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                            'class' => 'btn btn-danger',
-                            'title' => 'delete',
-                            'data-confirm'  => Yii::t('yii', 'Are you sure that you want to delete this item?'),
-                            'data-method'   => 'post',
-                        ]);
-                    },
+                    // 'delete' => function ($url, $model) {
+                    //     $url = Url::to(['/admin/pendaftar/delete', 'ev' => $_GET['ev'], 'id' => $model->pendaftar_id]);
+                    //     return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                    //         'class' => 'btn btn-danger',
+                    //         'title' => 'delete',
+                    //         'data-confirm'  => Yii::t('yii', 'Are you sure that you want to delete this item?'),
+                    //         'data-method'   => 'post',
+                    //     ]);
+                    // },
                 ],
             ],
         ],

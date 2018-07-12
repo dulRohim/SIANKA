@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\models\Pendaftar;
+use app\models\ktgAtlet;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pendaftar */
@@ -44,20 +45,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data, $row) {
                     $temp = json_decode($data['info_grup'], true);
                     $array = array();
-                    $no = 0;
                     if ($temp != null) {
                        foreach($temp as $t){
-                        $data = Pendaftar::find()->joinWith(['ktgAtlet', 'ktgAtlet.atletNik'])
+                        $data = ktgAtlet::find()->joinWith(['pendaftar', 'atletNik'])
                         ->where(
                             [
                                 'ktg_atlet.ktg_atlet_id'=>$t,
-                                'ktg_atlet.kontingen_id' =>Yii::$app->user->identity->kontingen_id
                             ])
                         ->one();
-                        $array[] = $data->ktgAtlet->atletNik->atlet_nama;
+                        $array[] = $data['atletNik']['atlet_nama'];
+                        
+                        
                     }
                     }
                     return implode($array,"<br>");
+
 
                 }
             ],

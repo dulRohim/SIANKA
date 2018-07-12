@@ -66,8 +66,14 @@ class BaganController extends Controller
     {
         $model = new Bagan();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+        if ($model->load(Yii::$app->request->post())) {
+            if (Bagan::find()->where(['kelas_id' => $model->kelas_id, 'event_id' => $model->event_id])->one() != null) {
+                echo "<script>alert( 'Data Sudah Ada' );</script>";
+            } else {
+                $model->save();
+                return $this->redirect(['index']);
+            }
+            
         }
 
         return $this->renderAjax('create', [
