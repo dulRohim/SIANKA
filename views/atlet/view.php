@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Atlet */
 
 $this->title = $model->atlet_nik." - ".$model->atlet_nama;
-$this->params['breadcrumbs'][] = ['label' => 'Atlets', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Atlet', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="atlet-view">

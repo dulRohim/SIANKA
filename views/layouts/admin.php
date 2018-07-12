@@ -8,9 +8,11 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\assets\AdminAsset;
 
-AppAsset::register($this);
+rmrevin\yii\ionicon\AssetBundle::register($this);
+rmrevin\yii\fontawesome\AssetBundle::register($this);
+AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -25,62 +27,36 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
-<?php $this->beginBody() ?>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+    <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-      'brandLabel' => 'SIANKA',
-      'brandUrl' => Yii::$app->homeUrl.'?r=admin',
-      'options' => [
-          'class' => 'navbar-inverse navbar-fixed-top',
-      ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/admin']],
-            // ['label' => 'Pendaftar', 'url' => ['/admin/pendaftar']],
-            ['label' => 'Events', 'url' => ['/admin/event']],
-            ['label' => 'Kelas', 'url' => ['/admin/kelas']],
-            ['label' => 'Bagan', 'url' => ['/admin/bagan']],
-            Yii::$app->user->isGuest ? (
-                // ['label' => 'Login', 'url' => ['/site/login']]
-                ''
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
+    <div class="wrapper">
+        <?= $this->render('navbar.php') ?>
+        <?= $this->render('sidebar.php') ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1><?= $this->title ?></h1>
+                <?= Breadcrumbs::widget(['links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            </section>
+            <section class="content">
+                <div class="box">
+                    <div class="box-body">
+                        <?= $content ?>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+            </div>
+            <?= Yii::powered() ?>
+        </footer>
     </div>
-</div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
-<?php $this->endBody() ?>
+    <?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Bagan */
 
-$this->title = $model->kelas->kelas_nama." - ".$model->event->event_nama;
+$this->title = $model->kelas->kelas_nama;
 $this->params['breadcrumbs'][] = ['label' => 'Bagan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

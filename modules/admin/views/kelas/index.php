@@ -9,12 +9,12 @@ use yii\bootstrap\Modal;
 /* @var $searchModel app\models\KelasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kelas';
+$this->title = 'Daftar Kelas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kelas-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        // 'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

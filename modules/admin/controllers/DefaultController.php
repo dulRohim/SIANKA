@@ -2,9 +2,12 @@
 
 namespace app\modules\admin\controllers;
 
+use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\models\LoginForm;
+
 
 /**
  * Default controller for the `admin` module
@@ -51,7 +54,7 @@ class DefaultController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginKontingenForm();
+        $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
             // return $this->goBack();
@@ -59,7 +62,7 @@ class DefaultController extends Controller
         }
 
         $model->password = '';
-        return $this->render('loginKontingen', [
+        return $this->render('login', [
             'model' => $model,
         ]);
     }
